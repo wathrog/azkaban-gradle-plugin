@@ -37,6 +37,7 @@ local.properties
 
 ### Gradle ###
 .gradle
+.groovy
 build/
 
 # Ignore Gradle GUI config

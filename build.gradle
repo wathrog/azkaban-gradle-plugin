@@ -2,6 +2,9 @@ apply plugin: 'groovy'
 apply plugin: 'maven'
 apply plugin: 'eclipse'
 
+group = 'org.wathrog'
+version = '0.0.1'
+
 repositories {
     mavenCentral()
 }
@@ -11,7 +14,7 @@ dependencies {
     compile localGroovy()
 
     testCompile('org.spockframework:spock-core:0.7-groovy-2.0') {
-       exclude group: 'org.codehaus.groovy', module: 'groovy-all'
+        exclude group: 'org.codehaus.groovy', module: 'groovy-all'
     }
     testCompile 'junit:junit:4.11'
 }
