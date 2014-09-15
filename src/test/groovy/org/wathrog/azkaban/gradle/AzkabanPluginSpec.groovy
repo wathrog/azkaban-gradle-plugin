@@ -1,16 +1,9 @@
 package org.wathrog.azkaban.gradle
 
-import org.gradle.testfixtures.ProjectBuilder
+import org.wathrog.azkaban.gradle.domain.Flow
+import org.wathrog.azkaban.gradle.domain.Job
 
-import spock.lang.Specification
-
-class AzkabanPluginSpec extends Specification {
-
-    def project = ProjectBuilder.builder().build()
-
-    def setup() {
-        project.apply plugin: 'azkaban'
-    }
+class AzkabanPluginSpec extends AzkabanAbstractSpecification {
 
     def "correct plugin type instance"() {
         when:
@@ -19,7 +12,7 @@ class AzkabanPluginSpec extends Specification {
         project.extensions.findByName('azkaban') != null
     }
 
-    def "dsl works"() {
+    def "dsl extension works"() {
         when:
 
         project.azkaban {
@@ -27,7 +20,7 @@ class AzkabanPluginSpec extends Specification {
                 aaaa {
                     test = false
                     jobs {
-                        bbbb { type = "test" }
+                        bbbb {  type = "noop"  }
                     }
                 }
             }
@@ -37,6 +30,6 @@ class AzkabanPluginSpec extends Specification {
         project.azkaban.flows.aaaa instanceof Flow
         project.azkaban.flows.aaaa.test == false
         project.azkaban.flows.aaaa.jobs.bbbb instanceof Job
-        project.azkaban.flows.aaaa.jobs.bbbb.type == "test"
+        project.azkaban.flows.aaaa.jobs.bbbb.type == "noop"
     }
 }
