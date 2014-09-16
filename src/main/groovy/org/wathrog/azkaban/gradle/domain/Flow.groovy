@@ -4,7 +4,6 @@ import org.gradle.api.NamedDomainObjectContainer
 
 class Flow {
     def String name
-    def Boolean test
     def NamedDomainObjectContainer<Job> jobs
 
     Flow(String name) {

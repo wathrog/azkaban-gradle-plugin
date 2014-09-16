@@ -18,7 +18,6 @@ class AzkabanPluginSpec extends AzkabanAbstractSpecification {
         project.azkaban {
             flows {
                 aaaa {
-                    test = false
                     jobs {
                         bbbb {  type = "noop"  }
                     }
@@ -28,7 +27,6 @@ class AzkabanPluginSpec extends AzkabanAbstractSpecification {
 
         then:
         project.azkaban.flows.aaaa instanceof Flow
-        project.azkaban.flows.aaaa.test == false
         project.azkaban.flows.aaaa.jobs.bbbb instanceof Job
         project.azkaban.flows.aaaa.jobs.bbbb.type == "noop"
     }
