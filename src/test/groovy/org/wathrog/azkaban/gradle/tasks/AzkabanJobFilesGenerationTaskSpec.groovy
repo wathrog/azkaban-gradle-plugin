@@ -29,7 +29,7 @@ class AzkabanJobFilesGenerationTaskSpec extends AzkabanAbstractSpecification {
                         job2 {
                             type = "command"
                             command = "echo test"
-                            deps = "job1"
+                            dependencies = "job1"
                         }
                     }
                 }
@@ -48,7 +48,7 @@ class AzkabanJobFilesGenerationTaskSpec extends AzkabanAbstractSpecification {
         workDir.listFiles()[0].listFiles()[1].readLines().equals([
             '# job2.job',
             'type=command',
-            'deps=job1',
+            'dependencies=job1',
             'command=echo test'
         ])
 

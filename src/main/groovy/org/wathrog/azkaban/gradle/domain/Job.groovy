@@ -3,7 +3,7 @@ package org.wathrog.azkaban.gradle.domain
 class Job {
     final String name
     JobType type
-    def String deps
+    def String dependencies
 
     public String getType() {
         return type.name;

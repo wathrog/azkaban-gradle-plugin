@@ -28,7 +28,7 @@ public class AzkabanJobFilesGenerationTask extends DefaultTask {
                 new File(outputDir.getPath() + AzkabanJobFilesGenerationTask.SEPARATOR + job.getName()+".job").withWriter { out ->
                     out.println("# "+job.getName()+".job")
                     out.println("type="+job.getType())
-                    if (job.getDeps() != null) out.println("deps="+job.getDeps())
+                    if (job.getDependencies() != null) out.println("dependencies="+job.getDependencies())
                     final String jobSpecProps = job.getJobTypeSpecificProperties()
                     if (jobSpecProps != null) out.println(job.getJobTypeSpecificProperties())
                 }
