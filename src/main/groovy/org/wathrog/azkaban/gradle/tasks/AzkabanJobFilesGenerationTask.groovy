@@ -8,11 +8,12 @@ import org.wathrog.azkaban.gradle.domain.Job
 
 public class AzkabanJobFilesGenerationTask extends DefaultTask {
     private final static String SEPARATOR = File.separator
+    private final static String WORK_DIR = 'azkaban'
 
     def flows
 
     @OutputDirectory
-    File baseOutputDir
+    File baseOutputDir = new File(project.getBuildDir().getPath() + AzkabanJobFilesGenerationTask.SEPARATOR + WORK_DIR)
 
     @TaskAction
     def generateJobFiles() {
@@ -22,7 +23,7 @@ public class AzkabanJobFilesGenerationTask extends DefaultTask {
 
         flows.each { Flow flow ->
             File outputDir = new File(baseOutputDir.getPath() + AzkabanJobFilesGenerationTask.SEPARATOR + flow.getName())
-            outputDir.mkdir()
+            outputDir.mkdirs()
             flow.jobs.each { Job job ->
                 new File(outputDir.getPath() + AzkabanJobFilesGenerationTask.SEPARATOR + job.getName()+".job").withWriter { out ->
                     out.println("# "+job.getName()+".job")

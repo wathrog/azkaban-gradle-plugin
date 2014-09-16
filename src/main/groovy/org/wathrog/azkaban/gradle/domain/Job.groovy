@@ -21,8 +21,8 @@ class Job {
     def String command
     def String flow
     def String jobClass
-    def String mainArgs
-    def String classpath
+    def String mainArgs = '${param.inData} ${param.outData}'
+    def String classpath = './lib/*,${hadoop.home}/lib/*'
 
     public String getJobTypeSpecificProperties() {
         def str = new StringBuilder()

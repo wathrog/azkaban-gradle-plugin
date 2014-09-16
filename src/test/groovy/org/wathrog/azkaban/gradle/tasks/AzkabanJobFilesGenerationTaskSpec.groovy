@@ -19,7 +19,7 @@ class AzkabanJobFilesGenerationTaskSpec extends AzkabanAbstractSpecification {
         tasks.getByName('createJobFiles2') instanceof AzkabanJobFilesGenerationTask
     }
 
-    def "outputs expected structure"() {
+    def "outputs expected structure and content"() {
         when:
         project.azkaban {
             flows {
